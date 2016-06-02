@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<style type="text/css">
+	*{margin: 0;padding: 0}
+	body{ _position: relative;overflow: hidden;}
+	#page{position: fixed;_position: absolute;right: 0;bottom: 0;}
+	#buttom{width: 203px;height: 50px;background: url(minibar.png) 0 0;position: absolute; bottom: 0;right: -203px;z-index: 10001;}
+	.nav{height: 22px;margin: 5px 0 0 43px;width: 125px;}
+	.nav li{list-style: none;width: 25px;height: 22px;float: left;}
+	.nav li a{display: block;width: 25px;height: 22px;}
+	.nav .li_1 a:hover{background: url(minibar.png) no-repeat 0 -51px;}
+	.nav .li_2 a:hover{background: url(minibar.png) no-repeat -25px -51px;}
+	.nav .li_3 a:hover{background: url(minibar.png) no-repeat -50px -51px;}
+	.nav .li_4 a:hover{background: url(minibar.png) no-repeat -75px -51px;}
+	.nav .li_5 a:hover{background: url(minibar.png) no-repeat -100px -51px;}
+	#buttom h2{color: #fff;font-size: 13px;font-weight: normal;margin-left: 9px;margin-top: 3px;}
+
+	.col{background: url(minibar.png) -236px 0;width: 34px;height: 50px;z-index: 100; position: absolute;bottom: 0;right: 0;z-index: 10002}
+	.col:hover{background: url(minibar.png) -269px 0;}
+
+	#box{width: 200px;height: 315px;position: absolute;right: 1px;bottom: -315px;display: none;padding: 0 0 48px;background: url(mini_jpgs.jpg);z-index: 10000;}
+	#box ul{width: 34px;height: 140px;background:url(minibar.png) 0 -254px; z-index: 10003;  }
+	#box li{list-style: none;line-height: 26.5px;text-align: center;}
+	#box li a{text-decoration: none;color: #fff;font-size: 12px;}
+	#box .active a{color: #dc9903;}
+	#box li a:hover{color: yellow;}
+
+	#box #close{width:10px;height: 10px;display: block; background:url(minibar.png) no-repeat 0 -75px; position: absolute;right: 10px;top: 14px; }
+	</style>
+	<script type="text/javascript" src="startMove.js"></script>
+	<script type="text/javascript">
+	window.onload = function(){
+		var oButtom = document.getElementById('buttom');
+		var oBox = document.getElementById('box');
+		var oCol = document.getElementById('col');
+		var oClose = document.getElementById('close');
+
+		oCol.onclick = function(){
+			startMove(oButtom,'right',0,function(){
+				oBox.style.display = 'block';
+				startMove(oBox,'bottom',0);
+			});
+		}
+
+		oClose.onclick = function(){
+			startMove(oBox,'bottom',-315,function(){
+				oBox.style.display = 'none';
+				startMove(oButtom,'right',-203);
+			});
+		}
+
+	}
+
+	</script>
+</head>
+<body>
+<div id="page">
+	<div id="buttom">
+		<ul class="nav">
+			<li class="li_1"><a href="javascript:;"></a></li>
+			<li class="li_2"><a href="javascript:;"></a></li>
+			<li class="li_3"><a href="javascript:;"></a></li>
+			<li class="li_4"><a href="javascript:;"></a></li>
+			<li class="li_5"><a href="javascript:;"></a></li>
+		</ul>
+		<h2>takokochan</h2>
+	</div>
+	<a class="col" id="col" href="#"></a>
+	<div id="box">
+		<ul>
+			<li class="active"><a href="javascript:;">天气</a></li>
+			<li><a href="javascript:;">星座</a></li>
+			<li><a href="javascript:;">排行</a></li>
+			<li><a href="javascript:;">热点</a></li>
+			<li><a href="javascript:;">直播</a></li>
+		</ul>
+		<a id="close" href="javascript:;"></a>
+
+
+	</div>
+</div>
+</body>
+</html>
